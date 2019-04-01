@@ -27,7 +27,7 @@ public class MyLinkedList<E> {
       return data;
     }
     public E setData(E value){
-      Integer oldData = data;
+      E oldData = data;
       data = value;
       return oldData;
     }
@@ -46,19 +46,19 @@ public class MyLinkedList<E> {
     length = 0;
   }
 
-  public void clear() {
-
-  }
-  public String toString() {
-
-  }
-  public boolean add(E element) {
-
-  }
-  public void extend (MyLinkedList<E> other) {
-
-  }
-  public E removeFront() {
-    
-  }
+  // public void clear() {
+  //
+  // }
+  // public String toString() {
+  //
+  // }
+  // public boolean add(E element) {
+  //
+  // }
+  // public void extend (MyLinkedList<E> other) {
+  //
+  // }
+  // public E removeFront() {
+  //
+  // }
 }
