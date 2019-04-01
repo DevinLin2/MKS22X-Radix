@@ -6,4 +6,11 @@ public class Radix {
       storage[i] = nums;
     }
   }
+
+  public static int getMaxDigit(int[] data) {
+    int max = 0;
+    for (int i = 0; i < data.length; i++) {
+      
+    }
+  }
 }
