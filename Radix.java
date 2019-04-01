@@ -1,8 +1,9 @@
 public class Radix {
-  public void radixsort(int[]data){
-    int[] storage = new int[10];
+  public static void radixsort(int[]data){
+    MyLinkedList[] storage = new MyLinkedList[10];
     for (int i = 0; i < storage.length; i++) {
-      // initiate MyLinkedLists
+      MyLinkedList nums = new MyLinkedList();
+      storage[i] = nums;
     }
   }
 }
