@@ -46,9 +46,15 @@ public class MyLinkedList<E> {
     length = 0;
   }
 
-  // public void clear() {
-  //
-  // }
+  public void clear() {
+    Node newStart = new Node(null,null,null);
+    Node newEnd = new Node(null,null,null);
+    start = newStart;
+    end = newEnd;
+    length = 0;
+    start.setNext(end);
+    end.setPrev(start);
+  }
   // public String toString() {
   //
   // }
