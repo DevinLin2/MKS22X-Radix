@@ -46,6 +46,10 @@ public class MyLinkedList<E> {
     length = 0;
   }
 
+  public int size() {
+    return length;
+  }
+
   public void clear() {
     Node newStart = new Node(null,null,null);
     Node newEnd = new Node(null,null,null);
@@ -73,18 +77,18 @@ public class MyLinkedList<E> {
   }
   public boolean add(E element) {
     if (length == 0){
-      start.setData(value);
+      start.setData(element);
       end.setPrev(start);
       length++;
       return true;
     }
     if (length == 1){
-      end.setData(value);
+      end.setData(element);
       start.setNext(end);
       length++;
       return true;
     }
-    Node addToEnd = new Node(value,null,null);
+    Node addToEnd = new Node(element,null,null);
     end.setNext(addToEnd);
     addToEnd.setPrev(end);
     end = addToEnd;
@@ -102,7 +106,7 @@ public class MyLinkedList<E> {
   }
   public E removeFront() {
     Node next = start.next();
-    E oldData = start.getData();
+    E oldData = (E) start.getData();
     start.setNext(null);
     start = next;
     return oldData;
