@@ -58,36 +58,53 @@ public class MyLinkedList<E> {
   public String toString() {
     Node current = start;
     String ans = "";
-    while(current.next != null){
+    while (current != null){
       ans += current.getData();
-      current = current.next;
+      if (current.next() != null){
+        ans += ", ";
+      }
+      if (current.next() != null){
+        current = current.next();
+      } else {
+        return ans;
+      }
     }
     return ans;
   }
   public boolean add(E element) {
     if (length == 0){
       start.setData(value);
+      end.setPrev(start);
       length++;
       return true;
     }
-    if (length == 1) {
+    if (length == 1){
       end.setData(value);
-      length++;
-      return true
-    }
-    if (length > 1) {
-      Node addToEnd = new Node(value,end,null);
-      end.setNext(addToEnd);
-      end = addToEnd;
+      start.setNext(end);
       length++;
       return true;
     }
-    return false;
+    Node addToEnd = new Node(value,null,null);
+    end.setNext(addToEnd);
+    addToEnd.setPrev(end);
+    end = addToEnd;
+    length++;
+    return true;
   }
-  // public void extend (MyLinkedList<E> other) {
-  //
-  // }
-  // public E removeFront() {
-  //
-  // }
+  public void extend (MyLinkedList<E> other) {
+    this.end.setNext(other.start);
+    other.start.setPrev(this.end);
+    this.end = other.end;
+    other.start = null;
+    other.end = null;
+    this.length += other.size();
+    other.length = 0;
+  }
+  public E removeFront() {
+    Node next = start.next();
+    E oldData = start.getData();
+    start.setNext(null);
+    start = next;
+    return oldData;
+  }
 }
