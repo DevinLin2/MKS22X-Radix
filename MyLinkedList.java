@@ -55,9 +55,15 @@ public class MyLinkedList<E> {
     start.setNext(end);
     end.setPrev(start);
   }
-  // public String toString() {
-  //
-  // }
+  public String toString() {
+    Node current = start;
+    String ans = "";
+    while(current.next != null){
+      ans += current.getData();
+      current = current.next;
+    }
+    return ans;
+  }
   // public boolean add(E element) {
   //
   // }
