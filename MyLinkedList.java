@@ -64,9 +64,26 @@ public class MyLinkedList<E> {
     }
     return ans;
   }
-  // public boolean add(E element) {
-  //
-  // }
+  public boolean add(E element) {
+    if (length == 0){
+      start.setData(value);
+      length++;
+      return true;
+    }
+    if (length == 1) {
+      end.setData(value);
+      length++;
+      return true
+    }
+    if (length > 1) {
+      Node addToEnd = new Node(value,end,null);
+      end.setNext(addToEnd);
+      end = addToEnd;
+      length++;
+      return true;
+    }
+    return false;
+  }
   // public void extend (MyLinkedList<E> other) {
   //
   // }
