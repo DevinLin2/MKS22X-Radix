@@ -98,13 +98,25 @@ public class MyLinkedList<E> {
     return true;
   }
   public void extend (MyLinkedList<E> other) {
-    this.end.setNext(other.start);
-    other.start.setPrev(this.end);
-    this.end = other.end;
-    other.start = null;
-    other.end = null;
-    this.length += other.size();
-    other.length = 0;
+    if (this!=null&&this.length==0){
+      this.start = other.start;
+      this.end = other.end;
+      this.length = other.length;
+      other.length=0;
+      other.start=null;
+      other.end=null;
+      return;
+    }
+    if (other.length!=0){
+      this.end.setNext(other.start);
+      other.start.setPrev(this.end);
+      this.end = other.end;
+      other.start = null;
+      other.end = null;
+      this.length += other.size();
+      other.length = 0;
+      return;
+    }
   }
   public E removeFront() {
     Node next = start.next();
