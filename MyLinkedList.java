@@ -40,11 +40,8 @@ public class MyLinkedList<E> {
   private Node start,end;
   public MyLinkedList() {
     Node start1 = new Node(null,null,null);
-    Node end1 = new Node(null,null,null);
     start = start1;
-    end = end1;
-    start.setNext(end);
-    end.setPrev(start);
+    end = start1;
     length = 0;
   }
 
@@ -54,12 +51,9 @@ public class MyLinkedList<E> {
 
   public void clear() {
     Node newStart = new Node(null,null,null);
-    Node newEnd = new Node(null,null,null);
     start = newStart;
-    end = newEnd;
+    end = newStart;
     length = 0;
-    start.setNext(end);
-    end.setPrev(start);
   }
   public String toString() {
     Node current = start;
@@ -80,13 +74,14 @@ public class MyLinkedList<E> {
   public boolean add(E element) {
     if (length == 0){
       start.setData(element);
-      end.setPrev(start);
       length++;
       return true;
     }
     if (length == 1){
-      end.setData(element);
+      Node toAdd = new Node(element,null,null);
+      end = toAdd;
       start.setNext(end);
+      end.setPrev(start);
       length++;
       return true;
     }
