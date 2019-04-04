@@ -39,8 +39,10 @@ public class MyLinkedList<E> {
   private int length;
   private Node start,end;
   public MyLinkedList() {
-    Node start = new Node(null,null,null);
-    Node end = new Node(null,null,null);
+    Node start1 = new Node(null,null,null);
+    Node end1 = new Node(null,null,null);
+    start = start1;
+    end = end1;
     start.setNext(end);
     end.setPrev(start);
     length = 0;
@@ -110,5 +112,11 @@ public class MyLinkedList<E> {
     start.setNext(null);
     start = next;
     return oldData;
+  }
+
+  public static void main(String[] args) {
+    MyLinkedList<Integer> data = new MyLinkedList();
+    data.add(5);
+    System.out.println(data);
   }
 }
