@@ -26,6 +26,7 @@ public class MyLinkedList<E> {
     public E getData(){
       return data;
     }
+    @SuppressWarnings("unchecked")
     public E setData(E value){
       E oldData = data;
       data = value;
@@ -71,6 +72,7 @@ public class MyLinkedList<E> {
     }
     return ans;
   }
+  @SuppressWarnings("unchecked")
   public boolean add(E element) {
     if (length == 0){
       start.setData(element);
@@ -92,26 +94,24 @@ public class MyLinkedList<E> {
     length++;
     return true;
   }
+  @SuppressWarnings("unchecked")
   public void extend (MyLinkedList<E> other) {
     if(other.size() == 0){
-          return;
-      }else if(size() == 0){
-          // If this list is empty
-          this.start = other.start;
-          this.end = other.end;
-          this.length = other.length;
-          other.clear();
-      }else{
-          // Append to the start of the other list to this list
-          Node startOfOtherList = other.start;
-          end.setNext(startOfOtherList);
-          startOfOtherList.setPrev(end);
-          // Update the end node of this list
-          end = other.end;
-          // Update size
-          length += other.size();
-          other.clear();
-      }
+      return;
+    }
+    if(size() == 0){
+      this.start = other.start;
+      this.end = other.end;
+      this.length = other.length;
+      other.clear();
+    }else{
+      Node startOfOtherList = other.start;
+      end.setNext(startOfOtherList);
+      startOfOtherList.setPrev(end);
+      end = other.end;
+      length += other.size();
+      other.clear();
+    }
   }
   public E removeFront() {
     Node next = start.next();
