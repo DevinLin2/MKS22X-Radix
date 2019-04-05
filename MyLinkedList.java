@@ -93,25 +93,25 @@ public class MyLinkedList<E> {
     return true;
   }
   public void extend (MyLinkedList<E> other) {
-    if (this!=null&&this.length==0){
-      this.start = other.start;
-      this.end = other.end;
-      this.length = other.length;
-      other.length=0;
-      other.start=null;
-      other.end=null;
-      return;
-    }
-    if (other.length!=0){
-      this.end.setNext(other.start);
-      other.start.setPrev(this.end);
-      this.end = other.end;
-      other.start = null;
-      other.end = null;
-      this.length += other.size();
-      other.length = 0;
-      return;
-    }
+    if(other.size() == 0){
+          return;
+      }else if(size() == 0){
+          // If this list is empty
+          this.start = other.start;
+          this.end = other.end;
+          this.length = other.length;
+          other.clear();
+      }else{
+          // Append to the start of the other list to this list
+          Node startOfOtherList = other.start;
+          end.setNext(startOfOtherList);
+          startOfOtherList.setPrev(end);
+          // Update the end node of this list
+          end = other.end;
+          // Update size
+          length += other.size();
+          other.clear();
+      }
   }
   public E removeFront() {
     Node next = start.next();
